@@ -7,6 +7,8 @@ import 'pages/my_experience.dart' as my_experience;
 import 'pages/my_gallery.dart' as my_gallery;
 import 'pages/my_projects.dart' as my_projects;
 
+import 'pages/about.dart' as about;
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -29,29 +31,41 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      /*
+        Awal AppBar
+      */
       appBar: AppBar(
         elevation: 5,
         shadowColor: Colors.blueGrey,
         backgroundColor: const Color(0xff0F52BA),
         leading: Padding(
           padding: const EdgeInsets.only(left: 12.0),
-          child: Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.white, width: 2.0),
-            ),
-            child: CircleAvatar(
-              radius: 0,
-              backgroundColor: const Color(0xff0F52BA),
-              child: ClipOval(
-                child: SizedBox(
-                  width: 40,
-                  height: 40,
-                  child: Image.asset(
-                    "assets/avatar/20240217_145327.jpg",
-                    fit: BoxFit.contain,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(40),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(builder: (context) => about.About()),
+              );
+            },
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.white, width: 2.0),
+              ),
+              child: CircleAvatar(
+                radius: 0,
+                backgroundColor: const Color(0xff0F52BA),
+                child: ClipOval(
+                  child: SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: Image.asset(
+                      "assets/avatar/20240217_145327.jpg",
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),
@@ -61,6 +75,9 @@ class _HomeState extends State<Home> {
         title: const Text("myPortfolio", style: TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
+      /*
+        Akhir AppBar
+      */
       extendBody: true,
       body: SafeArea(
         child: PageView(
