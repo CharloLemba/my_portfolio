@@ -15,9 +15,39 @@ class Cards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 10,
       child: Padding(
-        padding: EdgeInsets.all(12),
-        child: Column(children: []),
+        padding: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              teks1 ?? '',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xff0F52BA),
+              ),
+              textAlign: TextAlign.start,
+            ),
+            SizedBox(height: 15),
+            Text(
+              teks2 ?? '',
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.start,
+            ),
+            SizedBox(height: 10),
+            Text(
+              teks3 ?? '',
+              style: TextStyle(fontSize: 15, color: Colors.blueGrey),
+              textAlign: TextAlign.start,
+            ),
+          ],
+        ),
       ),
     );
   }
