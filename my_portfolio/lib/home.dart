@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_nav_bar/google_nav_bar.dart'; //Import package agar bisa pakai Google Nav Bar
+import 'package:font_awesome_flutter/font_awesome_flutter.dart'; //Import package agar bisa pakai Font Awesome Icon
 
+//Import halaman-halaman yang ada di folder pages
 import 'pages/my_education.dart' as my_education;
 import 'pages/my_experience.dart' as my_experience;
 import 'pages/my_gallery.dart' as my_gallery;
 import 'pages/my_projects.dart' as my_projects;
-
 import 'pages/about.dart' as about;
+//Import halaman-halaman yang ada di folder pages
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,6 +18,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  //Index halaman awal
   int _selectedIndex = 0;
 
   // Controller untuk swipe/pindah halaman dengan animasi
@@ -40,6 +42,7 @@ class _HomeState extends State<Home> {
         backgroundColor: const Color(0xff0F52BA),
         leading: Padding(
           padding: const EdgeInsets.only(left: 12.0),
+          //Inkwell agar circle avatar bisa diklik dan ada efek ripple saat diklik
           child: InkWell(
             borderRadius: BorderRadius.circular(40),
             onTap: () {
@@ -80,13 +83,16 @@ class _HomeState extends State<Home> {
       */
       extendBody: true,
       body: SafeArea(
+        //Pageview untuk bisa swipe/pindah halaman dengan Google Nav Bar
         child: PageView(
+          //Controller untuk mengendalikan halaman yang ada/aktif
           controller: _pageController,
           onPageChanged: (index) {
             setState(() {
               _selectedIndex = index;
             });
           },
+          //Halaman-halaman yang ada di dalam PageView sesuai urutan index yang ada di Google Nav Bar
           children: [
             my_education.MyEducation(),
             my_experience.MyExperience(),
@@ -95,6 +101,7 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
+      //Bottom Navigation Bar untuk berpindah-pindah halaman
       bottomNavigationBar: Container(
         color: const Color(0xff0F52BA),
         child: Padding(

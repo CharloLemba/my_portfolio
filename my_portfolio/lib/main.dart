@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'home.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MyApp()); //Fungsi utama, menjalankan MyApp
 }
 
 class MyApp extends StatelessWidget {
@@ -10,6 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Home());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Home(),
+    ); //Aplikasi MyApp() akan membuka Home() yang ada di home.dart
   }
 }
