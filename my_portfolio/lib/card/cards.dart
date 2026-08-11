@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 //Claass Cards umum
 class Cards extends StatelessWidget {
@@ -75,6 +76,7 @@ class CardsAbout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 10,
       child: Padding(
         padding: EdgeInsets.all(12),
         child: Column(
@@ -109,10 +111,74 @@ class CardsAbout extends StatelessWidget {
 
 //Claass Cards Github Projects
 class GithubCard extends StatelessWidget {
-  const GithubCard({super.key});
+  const GithubCard({
+    super.key,
+    required this.teks1,
+    required this.teks2,
+    required this.githubURL,
+  });
+
+  final String? teks1;
+  final String? teks2;
+  final String? githubURL;
+
+  Future<void> openUrl(String githubURL) async {
+    final uri = Uri.parse(githubURL);
+
+    try {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        debugPrint('Tidak dapat membuka: $githubURL');
+      }
+    } catch (e) {
+      debugPrint('Error: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Card();
+    return Card(
+      elevation: 10,
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              teks1 ?? '',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            //SizedBox(height: 15),
+            Divider(
+              color: Colors.blueGrey,
+              thickness: 1,
+              height: 24,
+              indent: 16,
+              endIndent: 16,
+            ),
+            InkWell(
+              onTap: () async {
+                await openUrl(githubURL ?? '');
+              },
+              child: Text(
+                teks2 ?? '',
+                style: const TextStyle(
+                  fontSize: 15,
+                  color: Color(0xff0F52BA),
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(height: 10),
+          ],
+        ),
+      ),
+    );
   }
 }
