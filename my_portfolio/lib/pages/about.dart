@@ -30,43 +30,45 @@ class About extends StatelessWidget {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Center(
-            child: Column(
-              children: [
-                SizedBox(height: 25),
-                Container(
-                  width: 210,
-                  height: 210,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 2.0),
-                  ),
-                  child: CircleAvatar(
-                    radius: 0,
-                    backgroundColor: const Color(0xff0F52BA),
-                    child: ClipOval(
-                      child: SizedBox(
-                        width: 200,
-                        height: 200,
-                        child: Image.asset(
-                          "assets/avatar/20240217_145327.jpg",
-                          fit: BoxFit.contain,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Center(
+              child: Column(
+                children: [
+                  SizedBox(height: 25),
+                  Container(
+                    width: 210,
+                    height: 210,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 2.0),
+                    ),
+                    child: CircleAvatar(
+                      radius: 0,
+                      backgroundColor: const Color(0xff0F52BA),
+                      child: ClipOval(
+                        child: SizedBox(
+                          width: 200,
+                          height: 200,
+                          child: Image.asset(
+                            "assets/avatar/20240217_145327.jpg",
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(height: 40),
-                CardsAbout(
-                  teks1: "CHARLO VIVALDI LEMBA, S.KOM",
-                  teks2:
-                      "Pengembang aplikasi berbasis Flutter yang bersemangat menciptakan aplikasi mobile modern yang rapi, cepat, dan memberikan pengalaman pengguna terbaik.",
-                  teks3:
-                      "Flutter Developer passionate about building modern, clean, and high-performance mobile aplications with excellent user experience.",
-                ),
-              ],
+                  SizedBox(height: 40),
+                  CardsAbout(
+                    teks1: "CHARLO VIVALDI LEMBA, S.KOM",
+                    teks2:
+                        "Pengembang aplikasi berbasis Flutter yang bersemangat menciptakan aplikasi mobile modern yang rapi, cepat, dan memberikan pengalaman pengguna terbaik.",
+                    teks3:
+                        "Flutter Developer passionate about building modern, clean, and high-performance mobile aplications with excellent user experience.",
+                  ),
+                ],
+              ),
             ),
           ),
         ),
