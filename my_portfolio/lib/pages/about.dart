@@ -20,6 +20,9 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Mengecek apakah mode gelap sedang aktif
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 5,
@@ -94,7 +97,8 @@ class About extends StatelessWidget {
               },
               icon: FaIcon(
                 FontAwesomeIcons.github,
-                color: Colors.black,
+                // Ikon GitHub otomatis putih saat dark mode, dan hitam saat light mode
+                color: isDark ? Colors.white : Colors.black,
                 size: 30,
               ),
               tooltip: "GitHub",

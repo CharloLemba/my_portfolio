@@ -15,6 +15,9 @@ class Cards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Mengecek apakah mode gelap sedang aktif
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Card(
       elevation: 10,
       child: Padding(
@@ -27,7 +30,7 @@ class Cards extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Color(0xff0F52BA),
+                color: const Color(0xff0F52BA),
               ),
               textAlign: TextAlign.center,
             ),
@@ -43,7 +46,8 @@ class Cards extends StatelessWidget {
               teks2 ?? '',
               style: TextStyle(
                 fontSize: 15,
-                color: Colors.black,
+                // Menyesuaikan warna teks agar tetap terlihat jelas saat dark mode
+                color: isDark ? Colors.white70 : Colors.black,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
@@ -75,6 +79,8 @@ class CardsAbout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Card(
       elevation: 10,
       child: Padding(
@@ -86,7 +92,8 @@ class CardsAbout extends StatelessWidget {
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                // Menyesuaikan warna teks judul di About
+                color: isDark ? Colors.white : Colors.black,
               ),
               textAlign: TextAlign.start,
             ),
@@ -136,6 +143,8 @@ class GithubCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Card(
       elevation: 10,
       child: Padding(
@@ -148,7 +157,8 @@ class GithubCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                // Menyesuaikan warna teks nama project github
+                color: isDark ? Colors.white : Colors.black,
               ),
               textAlign: TextAlign.center,
             ),

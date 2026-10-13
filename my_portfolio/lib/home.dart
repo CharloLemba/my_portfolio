@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart'; //Import package agar bisa pakai Google Nav Bar
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; //Import package agar bisa pakai Font Awesome Icon
+import 'package:google_nav_bar/google_nav_bar.dart'; //Import package agar bisa pakai Google Nav Bar[cite: 13]
+import 'package:font_awesome_flutter/font_awesome_flutter.dart'; //Import package agar bisa pakai Font Awesome Icon[cite: 13]
+import 'package:my_portfolio/main.dart';
 
 //Import halaman-halaman yang ada di folder pages
 import 'pages/my_education.dart' as my_education;
@@ -8,7 +9,8 @@ import 'pages/my_experience.dart' as my_experience;
 import 'pages/my_gallery.dart' as my_gallery;
 import 'pages/my_projects.dart' as my_projects;
 import 'pages/about.dart' as about;
-//Import halaman-halaman yang ada di folder pages
+
+//Import halaman-halaman yang ada di folder pages[cite: 13]
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -18,10 +20,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  //Index halaman awal
+  //Index halaman awal[cite: 13]
   int _selectedIndex = 0;
 
-  // Controller untuk swipe/pindah halaman dengan animasi
+  // Controller untuk swipe/pindah halaman dengan animasi[cite: 13]
   final PageController _pageController = PageController();
 
   @override
@@ -32,6 +34,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final myApp = MyApp.of(context);
+    final isDark = myApp?.isDarkTheme ?? false;
+
     return Scaffold(
       /*
         Awal AppBar
@@ -42,7 +47,7 @@ class _HomeState extends State<Home> {
         backgroundColor: const Color(0xff0F52BA),
         leading: Padding(
           padding: const EdgeInsets.only(left: 12.0),
-          //Inkwell agar circle avatar bisa diklik dan ada efek ripple saat diklik
+          //Inkwell agar circle avatar bisa diklik dan ada efek ripple saat diklik[cite: 13]
           child: InkWell(
             borderRadius: BorderRadius.circular(40),
             onTap: () {
@@ -77,22 +82,33 @@ class _HomeState extends State<Home> {
         ),
         title: const Text("myPortfolio", style: TextStyle(color: Colors.white)),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              myApp?.toggleTheme();
+            },
+            icon: Icon(
+              isDark ? Icons.sunny : Icons.nightlight_round,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
       /*
         Akhir AppBar
       */
       extendBody: true,
       body: SafeArea(
-        //Pageview untuk bisa swipe/pindah halaman dengan Google Nav Bar
+        //Pageview untuk bisa swipe/pindah halaman dengan Google Nav Bar[cite: 13]
         child: PageView(
-          //Controller untuk mengendalikan halaman yang ada/aktif
+          //Controller untuk mengendalikan halaman yang ada/aktif[cite: 13]
           controller: _pageController,
           onPageChanged: (index) {
             setState(() {
               _selectedIndex = index;
             });
           },
-          //Halaman-halaman yang ada di dalam PageView sesuai urutan index yang ada di Google Nav Bar
+          //Halaman-halaman yang ada di dalam PageView sesuai urutan index yang ada di Google Nav Bar[cite: 13]
           children: [
             my_education.MyEducation(),
             my_experience.MyExperience(),
@@ -101,7 +117,7 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      //Bottom Navigation Bar untuk berpindah-pindah halaman
+      //Bottom Navigation Bar untuk berpindah-pindah halaman[cite: 13]
       bottomNavigationBar: Container(
         color: const Color(0xff0F52BA),
         child: Padding(
@@ -134,7 +150,7 @@ class _HomeState extends State<Home> {
               const GButton(icon: Icons.work, text: "myExperience"),
               const GButton(icon: Icons.photo, text: "myGallery"),
               GButton(
-                // Menggunakan FaIcon di dalam leading
+                // Menggunakan FaIcon di dalam leading[cite: 13]
                 leading: FaIcon(
                   FontAwesomeIcons.github,
                   size: 20,
@@ -142,7 +158,7 @@ class _HomeState extends State<Home> {
                       ? const Color(0xff0F52BA)
                       : Colors.white70,
                 ),
-                icon: Icons.code, // Placeholder wajib dari GNav
+                icon: Icons.code, // Placeholder wajib dari GNav[cite: 13]
                 text: "myProjects",
               ),
             ],
