@@ -8,6 +8,7 @@ import 'pages/my_experience.dart' as my_experience;
 import 'pages/my_gallery.dart' as my_gallery;
 import 'pages/my_projects.dart' as my_projects;
 import 'pages/about.dart' as about;
+
 //Import halaman-halaman yang ada di folder pages
 
 class Home extends StatefulWidget {
